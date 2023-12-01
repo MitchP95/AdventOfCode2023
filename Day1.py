@@ -24,31 +24,43 @@ for line in lines:
 
     total += int(firstValue + lastValue)
     
-print(total)
+print('Part 1 Total:', total)
 
-# Part 2
+# Part 2   
+import re
+
+pattern = r'(?=(one|two|three|four|five|six|seven|eight|nine|\d))'
+word_mapping = {
+    'one' : '1',
+    'two' : '2',
+    'three': '3',
+    'four': '4',
+    'five': '5',
+    'six': '6',
+    'seven': '7',
+    'eight': '8',
+    'nine': '9',
+
+}
+
+# get digit as str
+def get_digit(num) -> str:
+    if num.isdigit():
+        return num
+    else:
+        return word_mapping[num]
+        
 total = 0
 for line in lines:
-    hasFirst = False
-    firstValue = ''
-    lastValue = ''
+    nums = ""
+    numbers = re.findall(pattern, line.strip())
 
-    startPointer = 0
-    for i in range(len(line)):
-        if (written_number_to_digit(line[startPointer:i]) != -1):
-            if not hasFirst:
-                firstValue = written_number_to_digit(line[startPointer:i])
-                hasFirst = True
-            else:
-                lastValue = written_number_to_digit(line[startPointer:i])
+    first = 0
+    last = len(numbers) - 1
 
-            startPointer = i + 1
-        else:
-            print(line[startPointer:i])
-        
-    if (lastValue == ''):
-        lastValue = firstValue
+    nums += get_digit(numbers[first])
+    nums += get_digit(numbers[last])
 
-    total += int(firstValue + lastValue)
-    
-print(total)
+    total += (int(nums))
+
+print('Part 2 Total:', total)

@@ -1,23 +1,28 @@
 def written_number_to_digit(written_number):
-    result = -1
+    # Define a list of written numbers and their corresponding digits
+    number_list = [
+        ('one', '1'),
+        ('two', '2'),
+        ('three', '3'),
+        ('four', '4'),
+        ('five', '5'),
+        ('six', '6'),
+        ('seven', '7'),
+        ('eight', '8'),
+        ('nine', '9'),
+        ('1', '1'),
+        ('2', '2'),
+        ('3', '3'),
+        ('4', '4'),
+        ('5', '5'),
+        ('6', '6'),
+        ('7', '7'),
+        ('8', '8'),
+        ('9', '9')
+    ]
 
-    if written_number == 'one':
-        result = 1
-    elif written_number == 'two':
-        result = 2
-    elif written_number == 'three':
-        result = 3
-    elif written_number == 'four':
-        result = 4
-    elif written_number == 'five':
-        result = 5
-    elif written_number == 'six':
-        result = 6
-    elif written_number == 'seven':
-        result = 7
-    elif written_number == 'eight':
-        result = 8
-    elif written_number == 'nine':
-        result = 9
+    for word, digit in number_list:
+        if word in written_number:
+            return digit
 
-    return result
+    return -1
